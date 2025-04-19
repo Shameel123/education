@@ -103,7 +103,7 @@ export default function MarkdownContent({
   };
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md">
+    <div className="bg-white p-6 rounded-lg ">
       <div className="prose prose-lg max-w-none">
         <ReactMarkdown
           remarkPlugins={[remarkGfm]} // Support GFM (tables, strikethrough, etc)
@@ -111,19 +111,19 @@ export default function MarkdownContent({
           components={{
             h1: ({ node, ...props }) => (
               <h1
-                className="text-3xl font-bold mb-4 pb-2 text-black border-b border-gray-200"
+                className="text-3xl font-bold mb-4 pb-2 text-orange-400 border-b border-gray-200"
                 {...props}
               />
             ),
             h2: ({ node, ...props }) => (
               <h2
-                className="text-2xl font-bold mt-8 mb-4 text-black"
+                className="text-2xl font-bold mt-8 mb-4 text-blue-950"
                 {...props}
               />
             ),
             h3: ({ node, ...props }) => (
               <h3
-                className="text-xl font-bold mt-6 mb-3 text-black"
+                className="text-xl font-bold mt-6 mb-3 text-blue-950"
                 {...props}
               />
             ),
