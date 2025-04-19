@@ -4,11 +4,14 @@ import { notFound } from "next/navigation";
 import MarkdownContent from "@/app/components/content-renderer/MarkddownContent";
 import DirectoryListing from "@/app/components/content-renderer/DirectoryListing";
 
-
 export const revalidate = 3600;
 
-export default async function LearningPathPage({ params }: any) {
-  const path = params.path.join("/");
+export default async function LearningPathPage(
+  _: any,
+  { params }: { params: Promise<{ path?: string[] }> }
+) {
+  const { path: rawPath } = await params;
+  const path = rawPath?.join("/") ?? "";
 
   try {
     const readmePath = path ? `${path}/README.md` : "README.md";
