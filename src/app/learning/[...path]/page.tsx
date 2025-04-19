@@ -6,15 +6,18 @@ import DirectoryListing from "@/app/components/content-renderer/DirectoryListing
 
 export const revalidate = 3600;
 
-// Correct pattern for dynamic route parameters in Next.js App Router
-export default async function LearningPathPage({
-  params,
-}: {
-  params: { path: string[] };
-}) {
-//   console.log("LearningPathPage params", await params.path);
-  const { path: rawPath } = await params;
-  const path = rawPath?.join("/") ?? "";
+export default async function LearningPathPage(
+  data: any,
+) {
+
+  const resolvedData = await data;
+  const resolvedParams = await resolvedData?.params; // Await the params promise
+  const pathArray = resolvedParams?.path;
+  const path = pathArray?.join("/") ?? "";
+
+  if (!pathArray) {
+    return notFound();
+  }
 
   try {
     const readmePath = path ? `${path}/README.md` : "README.md";
