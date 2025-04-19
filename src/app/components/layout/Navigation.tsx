@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import Image from "next/image";
 
 export default function Navigation() {
   const pathname = usePathname();
@@ -16,10 +17,12 @@ export default function Navigation() {
             href="/"
             className="flex items-center gap-2 transition hover:opacity-80"
           >
-            <span className="font-bold text-xl bg-gradient-to-r from-blue-800 to-blue-600 bg-clip-text text-transparent">
-              hasabTech
-            </span>
-            <span className="text-gray-600">Education</span>
+            <Image
+              src="/images/logo.png"
+              alt="hasabTech"
+              width={220}
+              height={220}
+            />
           </Link>
 
           {/* Mobile menu button */}
@@ -50,7 +53,7 @@ export default function Navigation() {
               href="/"
               className={`font-medium transition-colors duration-200 ${
                 pathname === "/"
-                  ? "text-blue-600 border-b-2 border-blue-600"
+                  ? "text-blue-950 border-b-2 border-blue-950"
                   : "text-gray-600 hover:text-blue-600"
               }`}
             >
@@ -60,17 +63,27 @@ export default function Navigation() {
               href="/learning"
               className={`font-medium transition-colors duration-200 ${
                 pathname.startsWith("/learning")
-                  ? "text-blue-600 border-b-2 border-blue-600"
+                  ? "text-blue-950 border-b-2 border-blue-950"
                   : "text-gray-600 hover:text-blue-600"
               }`}
             >
               Learning Paths
             </Link>
+            <Link
+              href="/learning"
+              className={`font-medium transition-colors duration-200 ${
+                pathname.startsWith("/learning")
+                  ? "text-blue-950 border-b-2 border-blue-950"
+                  : "text-gray-600 hover:text-blue-600"
+              }`}
+            >
+              Our Blogs
+            </Link>
             <a
               href="https://hasab.tech"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-medium text-gray-600 hover:text-blue-600"
+              className="font-medium text-gray-600 hover:text-blue-950"
             >
               Main Website
             </a>
@@ -89,11 +102,22 @@ export default function Navigation() {
             <Link
               href="/"
               className={`font-medium ${
-                pathname === "/" ? "text-blue-600" : "text-gray-600"
+                pathname === "/" ? "text-blue-950" : "text-gray-600"
               }`}
               onClick={() => setIsMenuOpen(false)}
             >
               Home
+            </Link>
+            <Link
+              href="/learning"
+              className={`font-medium ${
+                pathname.startsWith("/learning")
+                  ? "text-blue-950"
+                  : "text-gray-600"
+              }`}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Learning Paths
             </Link>
             <Link
               href="/learning"
@@ -104,7 +128,7 @@ export default function Navigation() {
               }`}
               onClick={() => setIsMenuOpen(false)}
             >
-              Learning Paths
+              Our Blogs
             </Link>
             <a
               href="https://hasab.tech"

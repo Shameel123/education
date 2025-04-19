@@ -22,16 +22,19 @@ export default function PathwayCard({
     .join(" ");
 
   return (
-    <Link href={path} className={className}>
+    <Link
+      href={path}
+      className={`${className} shadow-md hover:shadow-[5px_5px_rgba(23,_37,_84,_0.4),_10px_10px_rgba(23,_37,_84,_0.3),_15px_15px_rgba(23,_37,_84,_0.2),_20px_20px_rgba(23,_37,_84,_0.1),_25px_25px_rgba(23,_37,_84,_0.05)]`}
+    >
       <div className="border rounded-lg p-6 h-full hover:shadow-md transition cursor-pointer">
-        <div className="flex items-center gap-3 mb-3">
-          <BookIcon className="h-8 w-8 text-blue-600" />
-          <h3 className="text-xl font-semibold text-black">{formattedTitle}</h3>
+        <div className="flex items-center gap-3 mb-3 text-orange-400">
+          <BookIcon className="h-8 w-8 " />
+          <h3 className="text-xl font-semibold ">{formattedTitle}</h3>
         </div>
         <p className="text-gray-600">
           {description || `Explore the ${formattedTitle} learning pathway`}
         </p>
-        <div className="mt-4 text-blue-600 font-medium">
+        <div className="mt-4 text-orange-400 font-medium">
           Start Learning &rarr;
         </div>
       </div>
