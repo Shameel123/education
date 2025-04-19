@@ -1,19 +1,13 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { getFileContent, getRepoContent } from "@/lib/github";
 import { notFound } from "next/navigation";
 import MarkdownContent from "@/app/components/content-renderer/MarkddownContent";
 import DirectoryListing from "@/app/components/content-renderer/DirectoryListing";
 
-// Use the correct type for Next.js App Router pages
-type Props = {
-  params: {
-    path: string[];
-  };
-  searchParams: Record<string, string | string[] | undefined>;
-};
 
 export const revalidate = 3600;
 
-export default async function LearningPathPage({ params }: Props) {
+export default async function LearningPathPage({ params }: any) {
   const path = params.path.join("/");
 
   try {
