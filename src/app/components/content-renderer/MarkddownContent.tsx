@@ -103,7 +103,7 @@ export default function MarkdownContent({
   };
 
   return (
-    <div className="bg-white p-6 rounded-lg ">
+    <div className="bg-white w-full p-4 rounded-lg ">
       <div className="prose prose-lg max-w-none">
         <ReactMarkdown
           remarkPlugins={[remarkGfm]} // Support GFM (tables, strikethrough, etc)

@@ -76,7 +76,7 @@ export default async function Home() {
         </section>
 
         {/* Markdown Content Section */}
-        <section className="bg-white p-8 rounded-xl shadow-lg max-w-4xl mx-auto">
+        <section className="bg-white w-full p-8 rounded-xl shadow-lg  mx-auto">
           <MarkdownContent content={readmeContent} />
         </section>
       </div>
