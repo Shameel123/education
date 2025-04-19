@@ -1,70 +1,82 @@
 // app/page.tsx
-import { getRootReadme, getPathways } from '@/lib/github';
-import { extractTitle } from '@/lib/markdown'; // Assuming you have this or can add it
-import MarkdownContent from '@/app/components/content-renderer/MarkddownContent'
-import PathwayCard from '@/app/components/content-renderer/ui/PathwayCard';
-import { Metadata } from 'next';
+import { getRootReadme, getPathways } from "@/lib/github";
+import { extractTitle } from "@/lib/markdown"; // Assuming you have this or can add it
+import MarkdownContent from "@/app/components/content-renderer/MarkddownContent";
+import PathwayCard from "@/app/components/content-renderer/ui/PathwayCard";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: 'hasabTech Education - Learning Pathways',
-  description: 'Structured learning pathways to help you grow as a modern developer',
+  title: "hasabTech Education - Learning Pathways",
+  description:
+    "Structured learning pathways to help you grow as a modern developer",
 };
 
 export const revalidate = 3600; // Revalidate content every hour
 
 export default async function Home() {
-  // Get the root README from GitHub
   const readmeContent = await getRootReadme();
-  
+
   if (!readmeContent) {
     return (
       <div className="container mx-auto py-16 px-4">
-        <h1 className="text-4xl font-bold">hasabTech Education</h1>
-        <p className="mt-4">Failed to load content. Please check back later.</p>
+        <h1 className="text-4xl font-bold text-center text-gray-800">
+          hasabTech Education
+        </h1>
+        <p className="mt-4 text-center text-gray-600">
+          Failed to load content. Please check back later.
+        </p>
       </div>
     );
   }
-  
-  // Extract title from markdown (this could be your existing function or a new one)
-  const title = extractTitle(readmeContent) || 'hasabTech Education';
-  
-  // Get available pathways
+
+  const title = extractTitle(readmeContent) || "hasabTech Education";
   const pathways = await getPathways();
-  
+
   return (
-    <main>
-      <div className="bg-gradient-to-b from-blue-900 to-blue-700 text-white py-16">
-        <div className="container mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-bold">{title}</h1>
-          <p className="mt-4 text-xl">
+    <main className="min-h-screen bg-white">
+      {/* Hero Section with enhanced gradient and animation */}
+      <div className="bg-gradient-to-br from-blue-900 via-blue-700 to-blue-500 text-white py-24">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-5xl md:text-6xl font-bold animate-fade-in">
+            {title}
+          </h1>
+          <p className="mt-6 text-xl md:text-2xl text-blue-100 max-w-2xl mx-auto">
             Structured learning paths to help you grow as a modern developer
           </p>
-          <div className="mt-6">
+          <div className="mt-8">
             <a
               href="#pathways"
-              className="bg-white text-blue-800 px-6 py-2 rounded-md font-medium hover:bg-blue-50 transition"
+              className="bg-white text-blue-800 px-8 py-4 rounded-full font-medium 
+                       hover:bg-blue-50 transition-all duration-300 shadow-lg 
+                       hover:shadow-xl transform hover:-translate-y-1"
             >
               Explore Pathways
             </a>
           </div>
         </div>
       </div>
-      
-      <div className="container mx-auto py-12 px-4">
-        <section id="pathways" className="mb-16">
-          <h2 className="text-3xl font-bold mb-8">Learning Pathways</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      {/* Pathways Section with improved cards */}
+      <div className="container mx-auto py-16 px-4">
+        <section id="pathways" className="mb-16 scroll-mt-20">
+          <h2 className="text-4xl font-bold mb-12 text-center text-gray-800">
+            Learning Pathways
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {pathways.map((pathway) => (
               <PathwayCard
                 key={pathway.path}
                 title={pathway.name}
                 path={`/learning/${pathway.path}`}
+                className="bg-white shadow-lg rounded-xl hover:shadow-2xl 
+                         transition-all duration-300 transform hover:-translate-y-2"
               />
             ))}
           </div>
         </section>
-        
-        <section>
+
+        {/* Markdown Content Section */}
+        <section className="bg-white p-8 rounded-xl shadow-lg max-w-4xl mx-auto">
           <MarkdownContent content={readmeContent} />
         </section>
       </div>
