@@ -1,24 +1,24 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { getFileContent, getRepoContent } from '@/lib/github';
-import { processMarkdown } from '@/lib/markdown';
+import { NextRequest, NextResponse } from "next/server";
+import { getFileContent, getRepoContent } from "@/lib/github";
+import { processMarkdown } from "@/lib/markdown";
 
 export async function GET(request: NextRequest) {
   try {
     // Extract path from the URL
     const url = request.nextUrl;
     const pathSegments = url.pathname
-      .replace('/api/github/', '')
-      .split('/')
+      .replace("/api/github/", "")
+      .split("/")
       .filter(Boolean); // removes any empty segments
 
-    const path = pathSegments.join('/');
+    const path = pathSegments.join("/");
 
-    if (path.endsWith('.md')) {
+    if (path.endsWith(".md")) {
       const content = await getFileContent(path);
 
       if (!content) {
         return NextResponse.json(
-          { message: 'Content not found' },
+          { message: "Content not found" },
           { status: 404 }
         );
       }
@@ -30,9 +30,9 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ contents });
     }
   } catch (error) {
-    console.error('Error handling GitHub API request:', error);
+    console.error("Error handling GitHub API request:", error);
     return NextResponse.json(
-      { message: 'Failed to fetch from GitHub' },
+      { message: "Failed to fetch from GitHub" },
       { status: 500 }
     );
   }

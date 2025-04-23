@@ -1,29 +1,25 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import DirectoryListing from "@/app/components/content-renderer/DirectoryListing";
+import MarkdownContent from "@/app/components/content-renderer/MarkddownContent";
 import { getFileContent, getRepoContent } from "@/lib/github";
 import { notFound } from "next/navigation";
-import MarkdownContent from "@/app/components/content-renderer/MarkddownContent";
-import DirectoryListing from "@/app/components/content-renderer/DirectoryListing";
+import React from "react";
 
-export const revalidate = 3600;
-
-export default async function LearningPathPage(data: any) {
+export default async function Page(data: any) {
   const resolvedData = await data;
   const resolvedParams = await resolvedData?.params; // Await the params promise
-  const pathArray = resolvedParams?.path;
-  const path = pathArray?.join("/") ?? "";
-  console.log(pathArray);
-
-  if (!pathArray) {
-    return notFound();
-  }
-
+  const path = resolvedParams?.path;
+  console.log(path);
   try {
-    const readmePath = path ? `${path}/README.md` : "README.md";
+    const readmePath = path ? `modules/${path}.md` : "README.md";
+    console.log(readmePath);
     const readmeContent = await getFileContent(readmePath);
+    console.log(readmeContent);
     const dirContents = await getRepoContent(path);
 
     if (!readmeContent && dirContents.length === 0) {
-      return notFound();
+      return <div>this is dynamic route</div>;
+      // return notFound();
     }
 
     const filteredDirContents = dirContents.filter(

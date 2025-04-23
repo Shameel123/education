@@ -6,19 +6,21 @@ import DirectoryListing from "@/app/components/content-renderer/DirectoryListing
 
 export const revalidate = 3600;
 
-export default async function LearningPathPage(data: any) {
+export default async function Modules(data: any) {
   const resolvedData = await data;
   const resolvedParams = await resolvedData?.params; // Await the params promise
   const pathArray = resolvedParams?.path;
   const path = pathArray?.join("/") ?? "";
-  console.log(pathArray);
 
   if (!pathArray) {
+    // return <div>this is nested path</div>;
     return notFound();
   }
 
   try {
-    const readmePath = path ? `${path}/README.md` : "README.md";
+    const readmePath = path
+      ? `${path}/version-control-system-git-github.md`
+      : "README.md";
     const readmeContent = await getFileContent(readmePath);
     const dirContents = await getRepoContent(path);
 
