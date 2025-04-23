@@ -1,4 +1,4 @@
-import { Octokit } from '@octokit/rest';
+import { Octokit } from "@octokit/rest";
 
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 const REPO_OWNER = "hasabTech";
@@ -7,7 +7,7 @@ const DEFAULT_BRANCH = "main";
 
 // Initialize Octokit with token if available
 const octokit = new Octokit({
-  auth: GITHUB_TOKEN, 
+  auth: GITHUB_TOKEN,
 });
 
 export interface RepoContent {
@@ -27,16 +27,23 @@ export interface RepoContent {
 /**
  * Fetches repository content from a specific path
  */
-export async function getRepoContent(path: string = ""): Promise<RepoContent[]> {
+export async function getRepoContent(
+  path: string = ""
+): Promise<RepoContent[]> {
   try {
-    const { data }= await octokit.request("GET /repos/{owner}/{repo}/contents/{path}", {
-      owner: REPO_OWNER,
-      repo: REPO_NAME,
-      path,
-      ref: DEFAULT_BRANCH,
-    });
+    const { data } = await octokit.request(
+      "GET /repos/{owner}/{repo}/contents/{path}",
+      {
+        owner: REPO_OWNER,
+        repo: REPO_NAME,
+        path,
+        ref: DEFAULT_BRANCH,
+      }
+    );
 
-    return Array.isArray(data) ? data as RepoContent[] : [data as RepoContent];
+    return Array.isArray(data)
+      ? (data as RepoContent[])
+      : [data as RepoContent];
   } catch (error) {
     console.error(`Error fetching repo content at path ${path}:`, error);
     return [];
@@ -48,20 +55,24 @@ export async function getRepoContent(path: string = ""): Promise<RepoContent[]> 
  */
 export async function getFileContent(path: string): Promise<string | null> {
   try {
-    const { data } = await octokit.request("GET /repos/{owner}/{repo}/contents/{path}", {
+    const { data } = (await octokit.request(
+      "GET /repos/{owner}/{repo}/contents/{path}",
+      {
         owner: REPO_OWNER,
         repo: REPO_NAME,
         path,
         ref: DEFAULT_BRANCH,
-      }) as { data: RepoContent | RepoContent[] };
-      
+      }
+    )) as { data: RepoContent | RepoContent[] };
 
     if (Array.isArray(data) || !data) {
       return null;
     }
 
     // GitHub API returns base64 encoded content
-    return data.content ? Buffer.from(data.content, 'base64').toString('utf-8') : null;
+    return data.content
+      ? Buffer.from(data.content, "base64").toString("utf-8")
+      : null;
   } catch (error) {
     console.error(`Error fetching file content at path ${path}:`, error);
     return null;
@@ -72,7 +83,7 @@ export async function getFileContent(path: string): Promise<string | null> {
  * Fetches the root README.md content
  */
 export async function getRootReadme(): Promise<string | null> {
-  return getFileContent('README.md');
+  return getFileContent("README.md");
 }
 
 /**
@@ -80,10 +91,11 @@ export async function getRootReadme(): Promise<string | null> {
  */
 export async function getPathways(): Promise<RepoContent[]> {
   const contents = await getRepoContent();
-  return contents.filter(item => 
-    item.type === 'dir' && 
-    !item.name.startsWith('.') && 
-    item.name !== 'modules'
+  return contents.filter(
+    (item) =>
+      item.type === "dir" &&
+      !item.name.startsWith(".") &&
+      item.name !== "modules"
   );
 }
 
@@ -92,7 +104,7 @@ export async function getPathways(): Promise<RepoContent[]> {
  */
 export async function getModules(): Promise<RepoContent[]> {
   try {
-    return await getRepoContent('modules');
+    return await getRepoContent("modules");
   } catch (error) {
     console.error("Error fetching modules:", error);
     return [];

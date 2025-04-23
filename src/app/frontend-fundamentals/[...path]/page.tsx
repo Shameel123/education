@@ -11,19 +11,20 @@ export default async function LearningPathPage(data: any) {
   const resolvedParams = await resolvedData?.params; // Await the params promise
   const pathArray = resolvedParams?.path;
   const path = pathArray?.join("/") ?? "";
-  console.log(pathArray);
 
   if (!pathArray) {
-    return notFound();
+    <div>This page is under development</div>;
+    //  return notFound();
   }
 
   try {
-    const readmePath = path ? `${path}/README.md` : "README.md";
+    const readmePath = path ? `frontend/${path}.md` : "README.md";
     const readmeContent = await getFileContent(readmePath);
     const dirContents = await getRepoContent(path);
 
     if (!readmeContent && dirContents.length === 0) {
-      return notFound();
+      return <div>This is nested path</div>;
+      // return notFound();
     }
 
     const filteredDirContents = dirContents.filter(
