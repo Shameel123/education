@@ -18,7 +18,8 @@ export default async function LearningPathPage(data: any) {
   }
 
   try {
-    const readmePath = path ? `frontend/${path}.md` : "README.md";
+    const readmePath = path ? `frontend/${path}/README.md` : "README.md";
+    console.log(readmePath);
     const readmeContent = await getFileContent(readmePath);
     const dirContents = await getRepoContent(path);
 
