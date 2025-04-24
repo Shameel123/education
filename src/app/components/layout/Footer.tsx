@@ -1,87 +1,137 @@
+import {
+  FaFacebookF,
+  FaLinkedinIn,
+  FaInstagram,
+  FaGithub,
+  FaGlobe,
+  FaYoutube,
+} from "react-icons/fa";
+import Link from "next/link";
+import Image from "next/image";
+
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t bg-gradient-to-br from-blue-950 via-blue-950/95 to-orange-600/70">
-      <div className="container mx-auto px-4 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <footer className="bg-gradient-to-br from-[#0B134E] via-[#0B134E] to-orange-800/80 text-blue-100">
+      <div className="max-w-7xl mx-auto px-6 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          {/* Branding */}
           <div>
-            <h3 className="font-bold text-lg mb-4 text-orange-400">
-              hasabTech Education
-            </h3>
-            <p className="text-blue-100">
+            <Image
+              src={"/images/footer-logo.gif"}
+              alt="logo"
+              height={300}
+              width={300}
+            />
+            <p className="text-sm text-blue-200 max-w-xs">
               Curated learning pathways to help you grow as a modern developer.
             </p>
           </div>
 
+          {/* Quick Links */}
           <div>
-            <h3 className="font-bold text-lg mb-4 text-orange-400">
-              Connect With Us
-            </h3>
-            <ul className="space-y-2">
+            <h4 className="text-xl font-semibold text-orange-400 mb-4">
+              Quick Links
+            </h4>
+            <ul className="space-y-2 text-sm">
               <li>
-                <a
+                <Link
                   href="https://hasab.tech"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-100 hover:text-orange-400 hover:underline"
+                  className="hover:text-orange-300 transition"
                 >
-                  Website
-                </a>
+                  🌐 Website
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="https://github.com/hasabTech"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-100 hover:text-orange-400 hover:underline"
+                  className="hover:text-orange-300 transition"
                 >
-                  GitHub
-                </a>
+                  💻 GitHub
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="https://www.linkedin.com/company/80248667/admin/dashboard/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-100 hover:text-orange-400 hover:underline"
+                  className="hover:text-orange-300 transition"
                 >
-                  LinkedIn
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="font-bold text-lg mb-4 text-orange-400">
-              Resources
-            </h3>
-            <ul className="space-y-2">
-              <li>
-                <a
-                  href="https://github.com/hasabTech/learning-pathways"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-100 hover:text-orange-400 hover:underline"
-                >
-                  Source GitHub Repo
-                </a>
+                  🔗 LinkedIn
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="https://www.youtube.com/channel/UCoV4j9Teot3uWDGlIPJ0GPA"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-100 hover:text-orange-400 hover:underline"
+                  className="hover:text-orange-300 transition"
                 >
-                  YouTube Tutorials
-                </a>
+                  📺 YouTube
+                </Link>
               </li>
             </ul>
           </div>
+
+          {/* Social Icons */}
+          <div>
+            <h4 className="text-xl font-semibold text-orange-400 mb-4">
+              Follow Us
+            </h4>
+            <div className="flex gap-4">
+              <Link
+                href="https://web.facebook.com/hasabTech/"
+                className="hover:text-orange-300 transition"
+                target="_blank"
+              >
+                <FaFacebookF size={22} />
+              </Link>
+              <Link
+                href="https://www.linkedin.com/company/hasabTech
+"
+                className="hover:text-orange-300 transition"
+                target="_blank"
+              >
+                <FaLinkedinIn size={22} />
+              </Link>
+              <Link
+                href="https://www.instagram.com/hasab.tech/"
+                className="hover:text-orange-300 transition"
+                target="_blank"
+              >
+                <FaInstagram size={22} />
+              </Link>
+              <Link
+                href="https://github.com/hasabTech"
+                className="hover:text-orange-300 transition"
+                target="_blank"
+              >
+                <FaGithub size={22} />
+              </Link>
+              <Link
+                href="https://hasab.tech"
+                className="hover:text-orange-300 transition"
+                target="_blank"
+              >
+                <FaGlobe size={22} />
+              </Link>
+              <Link
+                href="https://www.youtube.com/@hasabTech"
+                className="hover:text-orange-300 transition"
+                target="_blank"
+              >
+                <FaYoutube size={22} />
+              </Link>
+            </div>
+          </div>
         </div>
 
-        <div className="border-t border-blue-800 mt-8 pt-8 text-center text-blue-100">
+        <div className="mt-10 border-t border-blue-800 pt-6 text-center text-sm text-blue-300">
           &copy; {currentYear} hasabTech. All rights reserved.
         </div>
       </div>
