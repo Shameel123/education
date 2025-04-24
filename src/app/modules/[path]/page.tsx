@@ -4,6 +4,7 @@ import MarkdownContent from "@/app/components/content-renderer/MarkddownContent"
 import { getFileContent, getRepoContent } from "@/lib/github";
 import { notFound } from "next/navigation";
 import React from "react";
+import GitLearningPathHeroSection from "../modules-ui/git-learning-path-hero";
 
 export default async function Page(data: any) {
   const resolvedData = await data;
@@ -18,8 +19,8 @@ export default async function Page(data: any) {
     const dirContents = await getRepoContent(path);
 
     if (!readmeContent && dirContents.length === 0) {
-      return <div>this is dynamic route</div>;
-      // return notFound();
+      // return <div>this is dynamic route</div>;
+      return notFound();
     }
 
     const filteredDirContents = dirContents.filter(
@@ -29,25 +30,32 @@ export default async function Page(data: any) {
     const isTopLevelPath = path.split("/").length === 1;
 
     return (
-      <div className="container mx-auto py-8 px-4">
-        {readmeContent && (
-          <div className="mb-8">
-            <MarkdownContent content={readmeContent} />
-          </div>
-        )}
+      <>
+        <GitLearningPathHeroSection />
+        <section className="">
+          <div className="container mx-auto py-8 px-4">
+            {readmeContent && (
+              <div className="mb-8">
+                <MarkdownContent content={readmeContent} />
+              </div>
+            )}
 
-        {filteredDirContents.length > 0 && (
-          <div className="mt-8">
-            <h2 className="text-2xl font-semibold mb-4">
-              {isTopLevelPath ? "Explore Learning Paths" : "Explore Modules"}
-            </h2>
-            <DirectoryListing
-              contents={filteredDirContents}
-              currentPath={path}
-            />
+            {filteredDirContents.length > 0 && (
+              <div className="mt-8">
+                <h2 className="text-2xl font-semibold mb-4">
+                  {isTopLevelPath
+                    ? "Explore Learning Paths"
+                    : "Explore Modules"}
+                </h2>
+                <DirectoryListing
+                  contents={filteredDirContents}
+                  currentPath={path}
+                />
+              </div>
+            )}
           </div>
-        )}
-      </div>
+        </section>
+      </>
     );
   } catch (error) {
     console.error(`Error loading content for path ${path}:`, error);

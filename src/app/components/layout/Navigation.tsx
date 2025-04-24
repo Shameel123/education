@@ -1,146 +1,158 @@
 "use client";
-
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useState } from "react";
+import Link from "next/link";
 import Image from "next/image";
 
-export default function Navigation() {
-  const pathname = usePathname();
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+const Navbar: React.FC = () => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-50 backdrop-blur-sm bg-white/90">
-      <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center py-4">
-          <Link
-            href="/"
-            className="flex items-center gap-2 transition hover:opacity-80"
-          >
-            <Image
-              src="/images/logo.png"
-              alt="hasabTech"
-              width={220}
-              height={220}
-            />
-          </Link>
-
-          {/* Mobile menu button */}
-          <button
-            className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
+    <div className="w-full flex justify-center">
+      <nav className="fixed z-50 w-full max-w-7xl md:my-2 mx-4 bg-white shadow-sm border border-gray-200 md:rounded-full px-6 py-3 md:px-8 md:mx-auto">
+        <div className="flex items-center justify-between">
+          {/* Logo */}
+          <div className="flex-shrink-0">
+            <Link href="/" className="flex items-center">
+              {/* <svg
+                classNLinkme="h-8 w-8 text-indigo-600"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
+                />
+              </svg>
+              <span className="ml-2 text-xl font-bold text-gray-800">
+                DevPath
+              </span> */}
+              <Image
+                src={"/images/logo.png"}
+                alt="image"
+                height={200}
+                width={200}
               />
-            </svg>
-          </button>
+            </Link>
+          </div>
 
-          {/* Desktop navigation */}
-          <nav className="hidden md:flex gap-8">
+          {/* Desktop Navigation - visible only on large screens (lg) */}
+          <div className="hidden lg:flex items-center space-x-8 text-[#0F134F]">
             <Link
-              href="/"
-              className={`font-medium transition-colors duration-200 ${
-                pathname === "/"
-                  ? "text-blue-950 border-b-2 border-blue-950"
-                  : "text-gray-600 hover:text-blue-600"
-              }`}
+              href="#learning-path"
+              className="text-gray-600 hover:text-indigo-600 transition duration-300 font-medium"
             >
-              Home
+              Learning Path
             </Link>
             <Link
-              href="/learning"
-              className={`font-medium transition-colors duration-200 ${
-                pathname.startsWith("/learning")
-                  ? "text-blue-950 border-b-2 border-blue-950"
-                  : "text-gray-600 hover:text-blue-600"
-              }`}
-            >
-              Learning Paths
-            </Link>
-            <Link
-              href="/learning"
-              className={`font-medium transition-colors duration-200 ${
-                pathname.startsWith("/learning")
-                  ? "text-blue-950 border-b-2 border-blue-950"
-                  : "text-gray-600 hover:text-blue-600"
-              }`}
+              href="https://blog.hasab.tech/"
+              rel="noopener noreferrer"
+              target="_blank"
+              className="text-gray-600 hover:text-indigo-600 transition duration-300 font-medium"
             >
               Our Blogs
             </Link>
-            <a
-              href="https://hasab.tech"
-              target="_blank"
+            <Link
+              href="https://hasabtech-frontend.vercel.app/"
+              className="text-gray-600 hover:text-indigo-600 transition duration-300 font-medium"
               rel="noopener noreferrer"
-              className="font-medium text-gray-600 hover:text-blue-950"
+              target="_blank"
             >
               Main Website
-            </a>
-          </nav>
+            </Link>
+            <Link
+              href="#"
+              rel="noopener noreferrer"
+              target="_blank"
+              className="bg-[#0F134F] text-white px-5 py-2 rounded-full hover:bg-green-700 transition duration-300 font-medium"
+            >
+              Join Our Community
+            </Link>
+          </div>
+
+          {/* Mobile/Medium Screen Menu Button - visible on small and medium screens */}
+          <div className="lg:hidden flex items-center">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-gray-500 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 rounded-md p-2"
+              aria-expanded={isOpen}
+            >
+              <span className="sr-only">Open main menu</span>
+              {isOpen ? (
+                <svg
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              ) : (
+                <svg
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                </svg>
+              )}
+            </button>
+          </div>
         </div>
 
-        {/* Mobile menu with animation */}
+        {/* Mobile/Medium Screen Dropdown Menu with animation */}
         <div
-          className={`md:hidden transition-all duration-300 ease-in-out ${
-            isMenuOpen
-              ? "max-h-64 opacity-100"
-              : "max-h-0 opacity-0 overflow-hidden"
+          className={`lg:hidden mt-6 pb-2 bg-white rounded-lg shadow-md absolute left-4 right-4 z-10 border border-gray-100 transform transition-all duration-300 ease-in-out ${
+            isOpen
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 -translate-y-4 pointer-events-none"
           }`}
         >
-          <nav className="flex flex-col gap-4 py-4 border-t">
+          <div className="flex flex-col space-y-4 p-4">
             <Link
-              href="/"
-              className={`font-medium ${
-                pathname === "/" ? "text-blue-950" : "text-gray-600"
-              }`}
-              onClick={() => setIsMenuOpen(false)}
+              href="#learning-path"
+              className="text-gray-600 hover:text-indigo-600 transition duration-300 px-3 py-2 rounded-md font-medium"
             >
-              Home
+              Learning Path
             </Link>
             <Link
-              href="/learning"
-              className={`font-medium ${
-                pathname.startsWith("/learning")
-                  ? "text-blue-950"
-                  : "text-gray-600"
-              }`}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Learning Paths
-            </Link>
-            <Link
-              href="/learning"
-              className={`font-medium ${
-                pathname.startsWith("/learning")
-                  ? "text-blue-600"
-                  : "text-gray-600"
-              }`}
-              onClick={() => setIsMenuOpen(false)}
+              href="#"
+              className="text-gray-600 hover:text-indigo-600 transition duration-300 px-3 py-2 rounded-md font-medium"
             >
               Our Blogs
             </Link>
-            <a
-              href="https://hasab.tech"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-medium text-gray-600"
+            <Link
+              href="https://blog.hasab.tech/"
+              className="text-gray-600 hover:text-indigo-600 transition duration-300 px-3 py-2 rounded-md font-medium"
             >
               Main Website
-            </a>
-          </nav>
+            </Link>
+            <Link
+              href="https://chat.whatsapp.com/DvWWIkt6OWBGBrzTfMR12k"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-[#0F134F] text-white px-4 py-2 rounded-full hover:bg-green-700 transition duration-300 text-center font-medium"
+            >
+              Join Our Community
+            </Link>
+          </div>
         </div>
-      </div>
-    </header>
+      </nav>
+    </div>
   );
-}
+};
+
+export default Navbar;

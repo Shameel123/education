@@ -29,7 +29,10 @@ export default async function page(data: any) {
     const isTopLevelPath = path.split("/").length === 1;
 
     return (
-      <div className="container mx-auto py-8 px-4">
+      <div
+        className="container mx-auto py-8 px-4 md:mt-20
+      "
+      >
         {readmeContent && (
           <div className="mb-8">
             <MarkdownContent content={readmeContent} />

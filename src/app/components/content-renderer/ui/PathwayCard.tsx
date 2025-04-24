@@ -1,40 +1,44 @@
+import Image from "next/image";
 import Link from "next/link";
 import { BookIcon } from "./Icons";
-
 interface PathwayCardProps {
-  title: string;
   path: string;
+  className?: string;
+  formattedTitle: string;
   description?: string;
-  className: string;
 }
 
 export default function PathwayCard({
-  title,
   path,
+  className = "",
+  formattedTitle,
   description,
-  className,
 }: PathwayCardProps) {
-  // Format title to be more readable
-  const formattedTitle = title
-    .replace(/-/g, " ")
-    .split(" ")
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ");
-
   return (
     <Link
       href={path}
-      className={`${className} shadow-md hover:shadow-[5px_5px_rgba(23,_37,_84,_0.4),_10px_10px_rgba(23,_37,_84,_0.3),_15px_15px_rgba(23,_37,_84,_0.2),_20px_20px_rgba(23,_37,_84,_0.1),_25px_25px_rgba(23,_37,_84,_0.05)]`}
+      className={`flex flex-col overflow-hidden rounded-2xl bg-white shadow-md hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-[1.02] w-full max-w-sm ${className}`}
     >
-      <div className="border rounded-lg p-6 h-full hover:shadow-md transition cursor-pointer">
-        <div className="flex items-center gap-3 mb-3 text-orange-400">
-          <BookIcon className="h-8 w-8 " />
-          <h3 className="text-xl font-semibold ">{formattedTitle}</h3>
+      <div className="relative h-48 sm:h-56 md:h-64 w-full">
+        <Image
+          src="/images/frontend.jpg"
+          alt={formattedTitle}
+          className="object-cover rounded-t-2xl"
+          fill
+        />
+      </div>
+
+      <div className="p-6 flex flex-col justify-between flex-grow space-y-3">
+        <div className="flex items-center gap-3 text-orange-500">
+          <BookIcon className="h-7 w-7" />
+          <h3 className="text-lg sm:text-xl font-semibold">{formattedTitle}</h3>
         </div>
-        <p className="text-gray-600">
+
+        <p className="text-sm sm:text-base text-gray-600">
           {description || `Explore the ${formattedTitle} learning pathway`}
         </p>
-        <div className="mt-4 text-orange-400 font-medium">
+
+        <div className="text-orange-500 font-semibold mt-auto">
           Start Learning &rarr;
         </div>
       </div>
