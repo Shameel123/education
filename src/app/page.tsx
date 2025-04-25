@@ -37,7 +37,7 @@ export default async function Home() {
   return (
     <main className="min-h-screen bg-white w-fit mx-auto ">
       {/* Hero Section */}
-      <section className=" md:px-10 lg:px-20">
+      <section className=" px-2 md:px-10 lg:px-20">
         <HeroSection title={title} />
       </section>
 
