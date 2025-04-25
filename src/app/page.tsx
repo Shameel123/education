@@ -5,7 +5,6 @@ import MarkdownContent from "@/app/components/content-renderer/MarkddownContent"
 import { Metadata } from "next";
 import HeroSection from "./components/ui/homepage-ui/hero-section";
 import PathWays from "./components/ui/homepage-ui/pathways-section";
-import MernTheory from "./components/ui/homepage-ui/mern-theory";
 
 export const metadata: Metadata = {
   title: "hasabTech Education - Learning Pathways",
@@ -45,10 +44,7 @@ export default async function Home() {
       <section id="learning-path">
         <PathWays pathways={pathways} />
       </section>
-      {/* Mern Theory Section */}
-      <section className="px-2 md:px-10 lg:px-20">
-        <MernTheory />
-      </section>
+
       {/* Markdown Content Section */}
       <section className="bg-white w-full p-6 sm:p-8 rounded-xl shadow-lg mx-auto">
         <MarkdownContent content={readmeContent} />
