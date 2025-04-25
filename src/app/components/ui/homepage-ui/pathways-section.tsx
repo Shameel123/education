@@ -25,7 +25,7 @@ export default function PathWays({ pathways }: PathWaysProps) {
             <PathwayCard
               key={pathway.path}
               formattedTitle={pathway.name}
-              path={`/learning/${pathway.path}`}
+              path={`https://github.com/hasabTech/learning-pathways/blob/main/frontend/README.md`}
               className="bg-white shadow-lg hover:shadow-2xl 
                          transition-all duration-300 transform hover:-translate-y-2 w-full sm:w-72"
             />

@@ -16,8 +16,10 @@ export default function PathwayCard({
 }: PathwayCardProps) {
   return (
     <Link
-      href={path}
+      href={`${path}`}
       className={`flex flex-col overflow-hidden rounded-2xl bg-white shadow-md hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-[1.02] w-full max-w-sm ${className}`}
+      target="_blank"
+      rel="noopener noreferrer"
     >
       <div className="relative h-48 sm:h-56 md:h-64 w-full">
         <Image
