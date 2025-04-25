@@ -57,7 +57,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="https://www.linkedin.com/company/80248667/admin/dashboard/"
+                  href="https://www.linkedin.com/company/hasabTech"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-orange-300 transition"

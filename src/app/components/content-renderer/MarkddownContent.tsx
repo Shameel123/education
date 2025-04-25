@@ -96,8 +96,14 @@ export default function MarkdownContent({
       }
 
       // Handle normal links within the same directory
-      const basePath = pathname.replace(/\/[^\/]*$/, "");
-      const finalPath = `${basePath}/${newPath}`.replace(/\/+/g, "/");
+      // const basePath = pathname.replace(/\/[^\/]*$/, "");
+      // const finalPath = `${pathname}/${newPath}`.replace(/\/+/g, "/");
+      const basePath = pathname;
+      const normalizedBase = basePath.startsWith("/learning")
+        ? basePath
+        : `/learning${basePath}`;
+      const finalPath = `${normalizedBase}/${newPath}`.replace(/\/+/g, "/");
+
       window.location.href = finalPath;
     }
   };
@@ -152,8 +158,10 @@ export default function MarkdownContent({
               <a
                 href={href}
                 className="text-blue-600 hover:text-blue-800 underline"
-                onClick={href ? handleLinkClick(href) : undefined}
+                // onClick={href ? handleLinkClick(href) : undefined}
                 {...props}
+                target="_blank"
+                rel="noopener noreferrer"
               />
             ),
             code: ({

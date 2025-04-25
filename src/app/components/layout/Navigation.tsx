@@ -9,6 +9,7 @@ const Navbar: React.FC = () => {
   return (
     <div className="w-full flex justify-center">
       <nav className="fixed z-50 md:border w-full max-w-7xl md:my-2 mx-4 bg-white shadow-sm border border-gray-400 md:rounded-full px-6 py-3 md:px-8 md:mx-auto">
+
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex-shrink-0">
@@ -63,10 +64,10 @@ const Navbar: React.FC = () => {
               Main Website
             </Link>
             <Link
-              href="#"
+              href="https://chat.whatsapp.com/DvWWIkt6OWBGBrzTfMR12k"
               rel="noopener noreferrer"
               target="_blank"
-              className="bg-[#0F134F] text-white px-5 py-2 rounded-full hover:bg-green-700 transition duration-300 font-medium"
+              className="bg-[#0F134F] text-white px-5 py-2 rounded-full hover:text-[#FB933B] transition duration-300 font-medium"
             >
               Join Our Community
             </Link>
