@@ -8,7 +8,8 @@ const Navbar: React.FC = () => {
 
   return (
     <div className="w-full flex justify-center">
-      <nav className="fixed z-50 w-full max-w-7xl md:my-2 mx-4 bg-white shadow-sm border border-gray-700 md:rounded-full px-6 py-3 md:px-8 md:mx-auto">
+      <nav className="fixed z-50 md:border w-full max-w-7xl md:my-2 mx-4 bg-white shadow-sm border border-gray-400 md:rounded-full px-6 py-3 md:px-8 md:mx-auto">
+
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex-shrink-0">

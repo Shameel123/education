@@ -10,7 +10,8 @@ interface HeroSectionProps {
 // Step 2: Use it in the component declaration
 export default function HeroSection({ title }: HeroSectionProps) {
   return (
-    <div className="border border-gray-600 md:mt-10 md:rounded-2xl  text-white py-16 p-4 relative flex flex-col justify-center items-center h-fit overflow-hidden">
+    <div className="border border-gray-400 mt-20 md:mt-10 shadow-xl rounded-2xl  text-white py-16 p-4 relative flex flex-col justify-center items-center h-fit overflow-hidden">
+
       {/* Background layers */}
       <div className="absolute md:rounded-2xl w-full h-full  z-10 bg-cover bg-no-repeat bg-[url(/images/tech-bg.jpg)] opacity-20" />
       <div className="absolute md:rounded-2xl w-full h-full backdrop-blur-xs md:backdrop-blur-4xl bg-white/20 md:bg-white/60  z-20 md:opacity-30 bg-cover" />
