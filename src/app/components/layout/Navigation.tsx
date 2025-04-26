@@ -9,7 +9,6 @@ const Navbar: React.FC = () => {
   return (
     <div className="w-full flex justify-center">
       <nav className="fixed z-50 md:border w-full max-w-7xl md:my-2 mx-4 bg-white shadow-sm border border-gray-400 md:rounded-full px-6 py-3 md:px-8 md:mx-auto">
-
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex-shrink-0">
@@ -43,7 +42,7 @@ const Navbar: React.FC = () => {
           <div className="hidden lg:flex items-center space-x-8 text-[#0F134F]">
             <Link
               href="#learning-path"
-              className="text-gray-600 hover:text-indigo-600 transition duration-300 font-medium"
+              className="text-gray-600 hover:text-orange-500 transition duration-300 font-medium"
             >
               Learning Path
             </Link>
@@ -51,13 +50,13 @@ const Navbar: React.FC = () => {
               href="https://blog.hasab.tech/"
               rel="noopener noreferrer"
               target="_blank"
-              className="text-gray-600 hover:text-indigo-600 transition duration-300 font-medium"
+              className="text-gray-600 hover:text-orange-500 transition duration-300 font-medium"
             >
               Our Blogs
             </Link>
             <Link
               href="https://hasabtech-frontend.vercel.app/"
-              className="text-gray-600 hover:text-indigo-600 transition duration-300 font-medium"
+              className="text-gray-600 hover:text-orange-500 transition duration-300 font-medium"
               rel="noopener noreferrer"
               target="_blank"
             >
@@ -67,7 +66,7 @@ const Navbar: React.FC = () => {
               href="https://chat.whatsapp.com/DvWWIkt6OWBGBrzTfMR12k"
               rel="noopener noreferrer"
               target="_blank"
-              className="bg-[#0F134F] text-white px-5 py-2 rounded-full hover:text-[#FB933B] transition duration-300 font-medium"
+              className="bg-[#0F134F] text-white px-5 py-2 rounded-full hover:bg-[#FB933B] transition duration-300 font-medium"
             >
               Join Our Community
             </Link>
@@ -125,19 +124,19 @@ const Navbar: React.FC = () => {
           <div className="flex flex-col space-y-4 p-4">
             <Link
               href="#learning-path"
-              className="text-gray-600 hover:text-indigo-600 transition duration-300 px-3 py-2 rounded-md font-medium"
+              className="text-gray-600 hover:text-orange-500 transition duration-300 px-3 py-2 rounded-md font-medium"
             >
               Learning Path
             </Link>
             <Link
               href="#"
-              className="text-gray-600 hover:text-indigo-600 transition duration-300 px-3 py-2 rounded-md font-medium"
+              className="text-gray-600 hover:text-orange-500 transition duration-300 px-3 py-2 rounded-md font-medium"
             >
               Our Blogs
             </Link>
             <Link
               href="https://blog.hasab.tech/"
-              className="text-gray-600 hover:text-indigo-600 transition duration-300 px-3 py-2 rounded-md font-medium"
+              className="text-gray-600 hover:text-orange-500 transition duration-300 px-3 py-2 rounded-md font-medium"
             >
               Main Website
             </Link>
@@ -145,7 +144,7 @@ const Navbar: React.FC = () => {
               href="https://chat.whatsapp.com/DvWWIkt6OWBGBrzTfMR12k"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[#0F134F] text-white px-4 py-2 rounded-full hover:bg-green-700 transition duration-300 text-center font-medium"
+              className="bg-[#0F134F] text-white px-4 py-2 rounded-full hover:bg-Orange-500 transition duration-300 text-center font-medium"
             >
               Join Our Community
             </Link>
