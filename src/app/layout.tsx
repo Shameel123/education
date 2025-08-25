@@ -1,18 +1,10 @@
-import "./globals.css";
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import Navigation from "@/app/components/layout/Navigation";
-import Footer from "@/app/components/layout/Footer";
-
-const inter = Inter({ subsets: ["latin"] });
+import Layout from '@/components/Layout';
+import './globals.css';
+import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: {
-    template: "%s | hasabTech Education",
-    default: "hasabTech Education - Learning Pathways",
-  },
-  description:
-    "Curated learning pathways to help you grow as a modern developer.",
+  title: 'hasabTech',
+  description: 'Shaping Developers & Shipping Products.',
 };
 
 export default function RootLayout({
@@ -21,11 +13,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={inter.className}>
+    <html lang="en">
       <body>
-        <Navigation />
-        <main className="min-h-screen">{children}</main>
-        <Footer />
+        <Layout>{children}</Layout>
       </body>
     </html>
   );

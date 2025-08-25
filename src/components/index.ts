@@ -1,0 +1,12 @@
+export { default as Header } from './UI/Header';
+export { default as GetStartedButton } from './Common/Button';
+export { default as HeroSection } from './UI/HeroSection';
+export { default as Featured } from './UI/Featured';
+export { default as ProgramsSection } from './UI/Programs';
+export { default as FinancilaFreedom } from './UI/CareerAccelerator';
+export { default as Registrations } from './UI/Registrations';
+export { default as MeetTheTeam } from './UI/MeetTheTeam';
+export { default as FAQ } from './UI/FAQ';
+export { default as Footer } from './UI/Footer';
+export { default as Preloader } from './UI/Preloader';
+export { default as MaskText } from './Common/MaskText';
