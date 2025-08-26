@@ -66,7 +66,10 @@ const Preloader = ({
             {word.map((t, i) => (
               <div
                 key={i}
-                ref={(element) => (spans.current[i] = element)} // Assign ref to each span
+                // ref={(element) => (spans.current[i] = element)} 
+                ref={(element: HTMLDivElement | null) => {// Assign ref to each span
+                  spans.current[i] = element;
+                }}
               >
                 {t}
               </div>
