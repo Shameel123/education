@@ -161,26 +161,17 @@ export const Offers = styled.div`
         flex: 1;
 
         ${ImageCtn} {
-          margin-top: 4.78rem;
           flex: 1;
-        }
-
-        ${TextCtn} {
-          margin-top: 4rem;
         }
       }
 
       div:last-child {
         flex: 1;
+        
 
         ${ImageCtn} {
-          margin-top: 5.7rem;
           flex: 1;
           margin-left: auto;
-        }
-
-        ${TextCtn} {
-          margin-top: 2rem;
         }
       }
     }

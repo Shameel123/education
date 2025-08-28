@@ -39,15 +39,15 @@ export const faqData: FAQItem[] = [
       'Providing certifications depends on the specific program. For the Career Accelerator Program, we do provide a certificate of completion for each track that the participants successfully complete. However, for the study abroad guide programs, we do not provide any certifications as they are more informational and guidance-based.',
   },
   {
-    question: 'How do I join the HasabTech Education community?',
+    question: 'How do I join the hasabTech Education community?',
     answer: 'You can join via our official Discord/WhatsApp group (insert your preferred platform). All announcements, discussions, and Q&A sessions happen there.'
   },
   {
-    question: 'Can I contribute to HasabTech Education?',
+    question: 'Can I contribute to hasabTech Education?',
     answer: 'Absolutely! If you’re an experienced developer or educator, you can volunteer as a mentor, create learning content for the community, or help us in building our internal products. Additionaly, you can also provide financial contributions by funding the fee of learners who cannot afford the monthly cost of our tracks.',
   },
   {
-    question: 'How can I contribute to HasabTech Education with my skillset?',
+    question: 'How can I contribute to hasabTech Education with my skillset?',
     answer: 'In order for you to contribute, you can join our community on Discord/WhatsApp and share your ideas. We are always looking for volunteers to help with content creation, mentorship, and community engagement. Furthermore, you can also email us at contact@hasab.tech',
   },
 ];
