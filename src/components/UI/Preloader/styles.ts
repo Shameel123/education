@@ -24,7 +24,6 @@ export const Inner = styled.div`
   padding: 0 2em;
   overflow: hidden;
   height: 12em;
-  margin-bottom: 1.5rem;
 
   img {
     width: 13em;
@@ -42,9 +41,8 @@ export const Inner = styled.div`
     }
   }
 
-  @media (min-width: 769px) and (max-width: 1023px) { 
+  @media (min-width: 621px) and (max-width: 1023px) { 
     gap: 1rem;
-    height: fit-content;
     img {
       width: 7rem;
       height: 7rem;
@@ -57,9 +55,13 @@ export const Inner = styled.div`
     }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 620px) {
     gap: 1rem;
+    display: flex;
+    align-items: center;
     height: fit-content;
+    margin-bottom: 20rem;
+    
     img {
       width: 3rem;
       height: 3rem;

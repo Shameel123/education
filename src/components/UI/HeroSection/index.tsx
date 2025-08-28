@@ -16,7 +16,7 @@ import Button from '@/components/Common/Button';
 const HeroSection = () => {
   const isMobile = useIsMobile();
   return (
-    <Wrapper>
+    <Wrapper id='home'>
       <Inner>
         <Pill>
           <span>A hasabTech Led Initiative</span>

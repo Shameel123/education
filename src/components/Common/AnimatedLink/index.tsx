@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import Link from 'next/link';
+import { Link as ScrollLink } from 'react-scroll'; 
 import { Div, Word, Span, AbsoluteContainer } from './styles';
 
 type AnimationProps = {
@@ -58,15 +58,30 @@ const letterAnimationTwo = {
   },
 };
 
-const AnimatedLink = ({ title, href }: { title: string; href: string }) => {
+type AnimatedLinkProps = {
+  title: string;
+  href: string;
+  onClick?: () => void; // ✅ For closing the menu on mobile
+};
+
+const AnimatedLink = ({ title, href, onClick }: AnimatedLinkProps) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <Link href={href} passHref>
-      <Div
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
+    <ScrollLink
+      to={href.replace('#', '')} // Remove '#' for react-scroll
+      smooth={true}
+      offset={-190} // ✅ Adjust for fixed navbar height
+      duration={600} // ✅ Smooth scroll duration in ms
+      spy={true}
+      className="cursor-pointer"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onClick={() => {
+        if (onClick) onClick(); // ✅ Close mobile menu after click
+      }}
+    >
+      <Div>
         <AnimatedWord
           title={title}
           animations={letterAnimation}
@@ -80,7 +95,7 @@ const AnimatedLink = ({ title, href }: { title: string; href: string }) => {
           />
         </AbsoluteContainer>
       </Div>
-    </Link>
+    </ScrollLink>
   );
 };
 

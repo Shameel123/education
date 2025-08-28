@@ -27,7 +27,7 @@ export const menu = {
 
 export const links = [
   {
-    url: '#',
+    url: '#home',
     linkTo: 'Home',
   },
   {

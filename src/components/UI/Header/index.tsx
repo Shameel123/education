@@ -58,7 +58,12 @@ const Header = () => {
         <Nav className={isOpen ? 'active' : ''}>
           {links.map((link, i) => (
             <div key={i} onClick={() => handleLinkClick(link.url)}>
-              <AnimatedLink title={link.linkTo} href={link.url} />
+              <AnimatedLink
+                key={i}
+                title={link.linkTo}
+                href={link.url}
+                onClick={closeMenu}
+              />
             </div>
           ))}
         </Nav>

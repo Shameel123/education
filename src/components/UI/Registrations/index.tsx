@@ -42,7 +42,7 @@ const Registrations = () => {
           </HeaderMainText>
         </Header>
         <div style={{ height: '250px', position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '2rem' }}>
-          <Folder size={2} color="#5227FF" className="custom-folder" items={["Frontend Dev", "Backend Dev", "AI Dev"]} />
+          <Folder size={2} color="#5227FF" className="custom-folder" items={["Backend Dev", "Agentic AI Dev", "Frontend Dev"]} />
         </div>
         <Edges>
           {edges.map((edge, i) => (
